@@ -5,3 +5,11 @@
 *.json
 *.txt
 nb*.xml
+# Ignorar o arquivo de configuração
+config.txt
+
+# Ignorar qualquer arquivo .jar baixado pelo script
+*.jar
+
+# Ignorar arquivos de log e outros gerados pelo bot
+serversettings.json
