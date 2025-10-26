@@ -15,46 +15,135 @@ A cross-platform Discord music bot with a clean interface, and that is easy to s
 
 [![Setup](http://i.imgur.com/VvXYp5j.png)](https://jmusicbot.com/setup)
 
-## Features
-  * Easy to run (just make sure Java is installed, and run!)
-  * Fast loading of songs
-  * No external keys needed (besides a Discord Bot token)
-  * Smooth playback
-  * Server-specific setup for the "DJ" role that can moderate the music
-  * Clean and beautiful menus
-  * Supports many sites, including Youtube, Soundcloud, and more
-  * Supports many online radio/streams
-  * Supports local files
-  * Playlist support (both web/youtube, and local)
+cmd start = java -Dnogui=true -jar music.jar
 
-## Supported sources and formats
-JMusicBot supports all sources and formats supported by [lavaplayer](https://github.com/sedmelluq/lavaplayer#supported-formats):
-### Sources
-  * YouTube
-  * SoundCloud
-  * Bandcamp
-  * Vimeo
-  * Twitch streams
-  * Local files
-  * HTTP URLs
-### Formats
-  * MP3
-  * FLAC
-  * WAV
-  * Matroska/WebM (AAC, Opus or Vorbis codecs)
-  * MP4/M4A (AAC codec)
-  * OGG streams (Opus, Vorbis and FLAC codecs)
-  * AAC streams
-  * Stream playlists (M3U and PLS)
-
-## Example
-![Loading Example...](https://i.imgur.com/kVtTKvS.gif)
-
-## Setup
-Please see the [Setup Page](https://jmusicbot.com/setup) to run this bot yourself!
-
-## Questions/Suggestions/Bug Reports
-**Please read the [Issues List](https://github.com/jagrosh/MusicBot/issues) before suggesting a feature**. If you have a question, need troubleshooting help, or want to brainstorm a new feature, please start a [Discussion](https://github.com/jagrosh/MusicBot/discussions). If you'd like to suggest a feature or report a reproducible bug, please open an [Issue](https://github.com/jagrosh/MusicBot/issues) on this repository. If you like this bot, be sure to add a star to the libraries that make this possible: [**JDA**](https://github.com/DV8FromTheWorld/JDA) and [**lavaplayer**](https://github.com/sedmelluq/lavaplayer)!
-
-## Editing
-This bot (and the source code here) might not be easy to edit for inexperienced programmers. The main purpose of having the source public is to show the capabilities of the libraries, to allow others to understand how the bot works, and to allow those knowledgeable about java, JDA, and Discord bot development to contribute. There are many requirements and dependencies required to edit and compile it, and there will not be support provided for people looking to make changes on their own. Instead, consider making a feature request (see the above section). If you choose to make edits, please do so in accordance with the Apache 2.0 License.
+MusicBot-0.4.3/
+├─ .circleci/
+│  └─ config.yml
+├─ .github/
+│  ├─ ISSUE_TEMPLATE/
+│  │  ├─ bug-report.yml
+│  │  ├─ config.yml
+│  │  └─ feature-request.yml
+│  ├─ workflows/
+│  │  ├─ build-and-test.yml
+│  │  └─ make-release.yml
+│  ├─ CODE_OF_CONDUCT.md
+│  ├─ FUNDING.yml
+│  └─ PULL_REQUEST_TEMPLATE.md
+├─ scripts/
+│  └─ run_jmusicbot.sh
+├─ src/
+│  ├─ main/
+│  │  ├─ java/
+│  │  │  └─ com/
+│  │  │     └─ jagrosh/
+│  │  │        └─ jmusicbot/
+│  │  │           ├─ audio/
+│  │  │           │  ├─ AloneInVoiceHandler.java
+│  │  │           │  ├─ AudioHandler.java
+│  │  │           │  ├─ NowplayingHandler.java
+│  │  │           │  ├─ PlayerManager.java
+│  │  │           │  ├─ QueuedTrack.java
+│  │  │           │  ├─ RequestMetadata.java
+│  │  │           │  └─ TransformativeAudioSourceManager.java
+│  │  │           ├─ commands/
+│  │  │           │  ├─ admin/
+│  │  │           │  │  ├─ PrefixCmd.java
+│  │  │           │  │  ├─ QueueTypeCmd.java
+│  │  │           │  │  ├─ SetdjCmd.java
+│  │  │           │  │  ├─ SettcCmd.java
+│  │  │           │  │  ├─ SetvcCmd.java
+│  │  │           │  │  └─ SkipratioCmd.java
+│  │  │           │  ├─ dj/
+│  │  │           │  │  ├─ ForceRemoveCmd.java
+│  │  │           │  │  ├─ ForceskipCmd.java
+│  │  │           │  │  ├─ MoveTrackCmd.java
+│  │  │           │  │  ├─ PauseCmd.java
+│  │  │           │  │  ├─ PlaynextCmd.java
+│  │  │           │  │  ├─ RepeatCmd.java
+│  │  │           │  │  ├─ SkiptoCmd.java
+│  │  │           │  │  ├─ StopCmd.java
+│  │  │           │  │  └─ VolumeCmd.java
+│  │  │           │  ├─ general/
+│  │  │           │  │  └─ SettingsCmd.java
+│  │  │           │  ├─ music/
+│  │  │           │  │  ├─ LyricsCmd.java
+│  │  │           │  │  ├─ NowplayingCmd.java
+│  │  │           │  │  ├─ PlayCmd.java
+│  │  │           │  │  ├─ PlaylistsCmd.java
+│  │  │           │  │  ├─ QueueCmd.java
+│  │  │           │  │  ├─ RemoveCmd.java
+│  │  │           │  │  ├─ SCSearchCmd.java
+│  │  │           │  │  ├─ SearchCmd.java
+│  │  │           │  │  ├─ SeekCmd.java
+│  │  │           │  │  ├─ ShuffleCmd.java
+│  │  │           │  │  └─ SkipCmd.java
+│  │  │           │  ├─ owner/
+│  │  │           │  │  ├─ AutoplaylistCmd.java
+│  │  │           │  │  ├─ DebugCmd.java
+│  │  │           │  │  ├─ EvalCmd.java
+│  │  │           │  │  ├─ PlaylistCmd.java
+│  │  │           │  │  ├─ SetavatarCmd.java
+│  │  │           │  │  ├─ SetgameCmd.java
+│  │  │           │  │  ├─ SetnameCmd.java
+│  │  │           │  │  ├─ SetstatusCmd.java
+│  │  │           │  │  └─ ShutdownCmd.java
+│  │  │           │  ├─ AdminCommand.java
+│  │  │           │  ├─ DJCommand.java
+│  │  │           │  ├─ MusicCommand.java
+│  │  │           │  └─ OwnerCommand.java
+│  │  │           ├─ entities/
+│  │  │           │  ├─ Pair.java
+│  │  │           │  └─ Prompt.java
+│  │  │           ├─ gui/
+│  │  │           │  ├─ ConsolePanel.java
+│  │  │           │  ├─ GUI.java
+│  │  │           │  └─ TextAreaOutputStream.java
+│  │  │           ├─ playlist/
+│  │  │           │  └─ PlaylistLoader.java
+│  │  │           ├─ queue/
+│  │  │           │  ├─ AbstractQueue.java
+│  │  │           │  ├─ FairQueue.java
+│  │  │           │  ├─ LinearQueue.java
+│  │  │           │  ├─ Queueable.java
+│  │  │           │  └─ QueueSupplier.java
+│  │  │           ├─ settings/
+│  │  │           │  ├─ QueueType.java
+│  │  │           │  ├─ RepeatMode.java
+│  │  │           │  ├─ Settings.java
+│  │  │           │  └─ SettingsManager.java
+│  │  │           ├─ utils/
+│  │  │           │  ├─ FormatUtil.java
+│  │  │           │  ├─ OtherUtil.java
+│  │  │           │  └─ TimeUtil.java
+│  │  │           ├─ Bot.java
+│  │  │           ├─ BotConfig.java
+│  │  │           ├─ JMusicBot.java
+│  │  │           └─ Listener.java
+│  │  └─ resources/
+│  │     ├─ natives/
+│  │     │  ├─ linux-aarch32/
+│  │     │  │  └─ libconnector.so
+│  │     │  ├─ linux-aarch64/
+│  │     │  │  └─ libconnector.so
+│  │     │  ├─ linux-arm/
+│  │     │  │  └─ libconnector.so
+│  │     │  ├─ linux-armhf/
+│  │     │  │  └─ libconnector.so
+│  │     │  └─ linux-x86/
+│  │     │     └─ libconnector.so
+│  │     ├─ logback.xml
+│  │     └─ reference.conf
+│  └─ test/
+│     └─ java/
+│        └─ com/
+│           └─ jagrosh/
+│              └─ jmusicbot/
+│                 ├─ FairQueueTest.java
+│                 └─ TimeUtilTest.java
+├─ .gitignore
+├─ CNAME
+├─ LICENSE
+├─ pom.xml
+└─ README.md
